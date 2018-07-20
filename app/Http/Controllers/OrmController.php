@@ -41,6 +41,7 @@ class OrmController extends BaseController {
     /**
      * 多对多示例
      * @see /orm/belongsmany
+     *
      * @author gaowei <gaowei@smzdm.com>
      * @date 2018-07-20
      */
@@ -50,10 +51,10 @@ class OrmController extends BaseController {
         $user_cheng = User::find(2);
 
         $hua_roles = $user_hua->roles;
-        $user_cheng = $user_cheng->roles;
+        $cheng_roles = $user_cheng->roles;
 
         dump($hua_roles);
-        dump($user_cheng);
+        dump($cheng_roles);
 
         $role2 = Role::find(2);
         $users = $role2->users;
