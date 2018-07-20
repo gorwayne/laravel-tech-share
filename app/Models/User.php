@@ -6,21 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model {
 
-    protected $table = 'users'; //指定表名
+    /**
+     * 一对一关联
+     * @author gaowei <gaowei@smzdm.com>
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @date 2018-07-20
+     */
+    public function extends() {
+        return $this->hasOne('App\Models\UserExtends');
+    }
 
-    protected $primaryKey = 'id'; //指定主键
+    /**
+     * 一对多关联
+     * @author gaowei <gaowei@smzdm.com>
+     * @date 2018-07-20
+     */
+    public function auths() {
+        return $this->hasMany('App\Models\UserAuth');
+    }
 
-    public $timestamps = false; //时间戳自动维护
-
-    protected $connection = 'connection-name'; //指定连接
-
-    // 自动填充
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    // 自动隐藏
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    /**
+     * 多对多关联
+     * @author gaowei <gaowei@smzdm.com>
+     * @date 2018-07-20
+     */
+    public function roles() {
+        return $this->belongsToMany('App\Models\Role');
+    }
 }

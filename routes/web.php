@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('mock_redis', 'Controller@mock_redis');
+Route::get('/orm/hasone', 'OrmController@hasOne');
+Route::get('/orm/hasmany', 'OrmController@hasMany');
+Route::get('/orm/belongsmany', 'OrmController@belongsMany');
